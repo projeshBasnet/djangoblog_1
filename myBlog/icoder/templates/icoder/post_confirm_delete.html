@@ -1,0 +1,17 @@
+{% extends 'icoder/base.html' %}
+{% block content %}
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <legend class="border-bottom ml-3"> Delete Post</legend>
+        <fieldset>
+            <div class="form-group">
+                <h2>Are you sure you want to delete post of title "{{ object.title }}"?</h2>
+            </div>
+        </fieldset>
+        <button type="submit" class="btn btn-outline-danger mb-2 ml-2">Yes, Delete</button>
+        <a href=" {% url 'detail-post' object.id %}" class="btn btn-outline-secondary mb-2 ml-2">Cancel</a>
+    </form>
+
+</div>
+{% endblock content %}

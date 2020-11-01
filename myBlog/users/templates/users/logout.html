@@ -1,0 +1,12 @@
+{% extends 'icoder/base.html' %}
+{% block content %}
+<div class="container">
+    <h4>
+        You have been logged out
+    </h4>
+   
+    <div>
+     <a href="{% url 'login' %}">Login in again</a>
+    </div>
+</div>
+{% endblock content %}

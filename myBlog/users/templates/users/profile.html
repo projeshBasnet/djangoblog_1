@@ -1,0 +1,31 @@
+{% extends 'icoder/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container">
+
+    <div class="content-wrappper m-4" style="display: flex;">
+        <img src="{{ user.profile.image.url }}" alt="User image" style="width: 125px; height: 125px;"
+            class="rounded-circle">
+        <div class="content-info ml-3">
+            <h4>Name: {{ user.username }}</h4>
+            <h4>Email: {{ user.email }}</h4>
+        </div>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <legend class="border-bottom ml-3"> Update User</legend>
+            <fieldset>
+                <div class="form-group">
+                    {{ u_form|crispy }}
+                    {{ p_form|crispy }}
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-outline-info mb-4 ml-2">Update</button>
+    </form>
+
+</div>
+
+
+{% endblock content %}

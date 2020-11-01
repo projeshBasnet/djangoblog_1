@@ -1,0 +1,29 @@
+{% extends 'icoder/base.html' %}
+{% block content %}
+<style>
+    .container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr))
+    }
+   .card{
+       align-items: center;
+       margin: 4px auto;
+   }
+</style>
+<div class="container">
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <img src="{{ object.user.profile.image.url }}" alt="" class="rounded-circle" style="width: 125px;height: 125px;">
+            <h6 class="text-muted">{{ object.user.username }}</h6>
+            <h4 class="card-title">{{ object.title }}</h4>
+            <p class="card-text">{{ object.content }} </p>
+            <h5>{{ object.dateposted|date:"F d, Y" }}</h5>
+            {% if user.is_authenticated and object.user == user %}
+            <a href="{% url 'update-post' object.id %}" class="btn btn-outline-info">Update</a>
+            <a href="{% url 'delete-post' object.id %}" class="btn btn-outline-danger">Delete</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
